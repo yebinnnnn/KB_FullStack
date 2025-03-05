@@ -6,10 +6,18 @@
     <title>Form</title>
   </head>
   <body>
-    <form>
-      <input type="text" /> &nbsp; <input type="password" /> &nbsp;
-      <input type="checkbox" />check1 &nbsp; <input type="checkbox" />check3
-      &nbsp;<input type="checkbox" />check2
+    <!-- method 의 생략: 기본GET 방식 , action의 생략: 현재 사용중인 url -->
+    <form
+      autocomplete="off"
+      method="post"
+      action="http://www.naver.com"
+      enctype=""
+    >
+      <!-- autocomplete off는 내가 예전에 입력했던 값들이 자동으로 뜨지 않게 해줌 -->
+      <input type="text" placeholder="insert your name" /> &nbsp;
+      <input type="password" placeholder="insert your password" /> &nbsp;
+      <input type="checkbox" checked />check1 &nbsp;
+      <input type="checkbox" />check3 &nbsp;<input type="checkbox" />check2
       <br />
       <!-- 체크박스를 같은 모임으로 묶는건 name -->
       <label for="first">3개 중 고르기</label>
@@ -24,19 +32,21 @@
       <hr />
       <label for="day">날짜</label> :
       <input type="datetime-local" name="day" />
-      <label for="r4">이메일</label> : <input type="email" id="r4" name="r4" />
+      <label for="r4">이메일</label> :
+      <input type="email" placeholder="insert your email" id="r4" name="r4" />
       <!-- 모바일 입력 특화 -->
       <!-- name 속성이 없으면 url에 전송이 되지 않음. (id만 있어도 안됨) -->
-      <input type="tel" />
-      <input type="range" />
+      <!-- id 속성은 DOM 때 많이 쓰인다. 문서에서 해당요소를 식별하기 위해 쓰인다. (중복X) -->
+      <input type="tel" name="tel" required />
+      <input type="range" min="10" max="100" name="rangeNum" />
       <hr />
       <select>
         <option>ONE</option>
-        <option>TWO</option>
+        <option selected>TWO</option>
         <option>THREE</option>
       </select>
-      <textarea rows="4" cols="20" id="textarea">
-        ABCDE
+      <textarea rows="4" cols="20" id="textarea" name="ta">
+ABCDE
       </textarea>
       <button>전송</button>
       <button>전송</button>
