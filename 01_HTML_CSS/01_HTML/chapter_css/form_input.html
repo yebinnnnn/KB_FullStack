@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" /> &nbsp; <input type="password" /> &nbsp;
+      <input type="checkbox" />check1 &nbsp; <input type="checkbox" />check3
+      &nbsp;<input type="checkbox" />check2
+      <br />
+      <!-- 체크박스를 같은 모임으로 묶는건 name -->
+      <label for="first">3개 중 고르기</label>
+      <input type="radio" name="first" value="r1" />ONE&nbsp; &nbsp;
+      <input type="radio" name="first" value="r2" />TWO&nbsp; &nbsp;
+      <input type="radio" name="first" value="r3" />THREE &nbsp; &nbsp;
+      <input type="hidden" name="h" value="h1" />
+      <br />
+      <hr />
+      <input type="file" name="h1" />
+      <br />
+      <hr />
+      <label for="day">날짜</label> :
+      <input type="datetime-local" name="day" />
+      <label for="r4">이메일</label> : <input type="email" id="r4" name="r4" />
+      <!-- 모바일 입력 특화 -->
+      <!-- name 속성이 없으면 url에 전송이 되지 않음. (id만 있어도 안됨) -->
+      <input type="tel" />
+      <input type="range" />
+      <hr />
+      <select>
+        <option>ONE</option>
+        <option>TWO</option>
+        <option>THREE</option>
+      </select>
+      <textarea rows="4" cols="20" id="textarea">
+        ABCDE
+      </textarea>
+      <button>전송</button>
+      <button>전송</button>
+      <!-- form 태그 내부의 button 태그는 자동으로 submit 역할을 한다. -->
+      <input type="submit" value="전송2" />
+    </form>
+    <hr />
+    <!-- form태그 바깥에 있는 button 은 js 를 연결해 기능을 연결해줘야 한다. -->
+    <input type="button" value="아무효과없는버튼" />
+    form 외부 <br />
+    <button>일반버튼</button>
+  </body>
+</html>
