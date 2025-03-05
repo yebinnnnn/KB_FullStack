@@ -5,10 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="basis.css" />
+    <!-- 위에서부터 반영하는거라 link 가 아래로 내려가면 얘가 적용됨 -->
+    <style>
+      /* 오버라이드가 아니라 오버로딩에 가까움 */
+      * {
+        text-align: end;
+      }
+      h1 {
+        border: 3px solid;
+        width: 500px;
+        color: darkcyan;
+      }
+      /* id 속성 */
+      /* id 선택자의 우선순위가 더 높음 */
+      #hid1 {
+        height: 400px;
+        color: darkorange;
+        border-color: deepskyblue;
+      }
+      .c1 {
+        color: darkorchid;
+        font-size: 2em;
+        border-style: dotted;
+      }
+    </style>
   </head>
   <body>
-    <h1>CSS파일 적용</h1>
-    <div>DIV영역</div>
-    <h1>두번째 적용</h1>
+    <!-- inline style -->
+    <h1 style="text-decoration-line: underline; text-align: center">
+      첫번째 제목
+    </h1>
+    <div id="div1">DIV영역</div>
+    <h1 id="hid1" class="c1" style="text-decoration-line: line-through">
+      두번째 제목
+    </h1>
+    <div class="c1">DIV영역</div>
   </body>
 </html>
