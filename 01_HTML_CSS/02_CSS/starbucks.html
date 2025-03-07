@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* border 값이 실제로 너비가 되게 하려면 box-sizing 의 border-box */
+      body {
+        background-color: whitesmoke;
+        overflow: hidden;
+      }
+      .topbar {
+        display: flex;
+        background: floralwhite;
+        overflow: hidden;
+      }
+      .lefticon {
+        position: absolute;
+      }
+      #mainmenu {
+        top: 50px;
+        float: right;
+        margin: 15px;
+      }
+      .item {
+        float: left;
+        padding: 10px;
+        margin: 0 5px;
+      }
+      #topmenu {
+        float: right;
+        font-size: 80%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="lefticon">
+        <img src="starbucks.png" width="90px" height="85px" />
+      </div>
+      <div class="righttop">
+        <div id="topmenu">
+          <div class="item">Sign In</div>
+          <div class="item">My Starbucks</div>
+          <div class="item">Customer Services & ideas</div>
+          <div class="item">Find a Store</div>
+          <div class="item">돋보기</div>
+        </div>
+        <div id="mainmenu">
+          <div class="item">COFFEE</div>
+          <div class="item">MENU</div>
+          <div class="item">STORE</div>
+          <div class="item">RESPONSIBILITY</div>
+          <div class="item">STARBUCKS REWARDS</div>
+          <div class="item">COPORATE SALES</div>
+          <div class="item">WHAT'S NEW</div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div id="left">내용</div>
+      <div id="rightadd">광고레이아웃</div>
+    </div>
+    <div class="foot"></div>
+  </body>
+</html>
