@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0"
+    />
+    <title>Document</title>
+    <style>
+      #menu {
+        width: 260px;
+        float: left;
+      }
+      #section {
+        width: 700px;
+        float: right;
+      }
+      @media screen and (max-width: 767px) {
+        body {
+          width: auto;
+        }
+        #menu {
+          width: auto;
+          float: none;
+        }
+        #section {
+          width: auto;
+          float: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="section">
+      <h1>Lorem, ipsum.</h1>
+    </div>
+    <div id="menu">
+      <ul>
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+      </ul>
+    </div>
+  </body>
+</html>

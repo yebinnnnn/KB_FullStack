@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* clear 속성으로 float 를 끝낼 수 있다. (방향지정)
+        또는 부모 overflow 에 hidden */
+      body {
+        width: 500px;
+        margin: 10px auto;
+      }
+      #middle {
+        /* flex 넣으면 left right 간의 길이 차이때문에 생긴 공백이 채워짐 (영역 크기 맞춤) */
+        /* 구냥 flex는 쓰는 추세 */
+        display: flex;
+        overflow: hidden;
+        /* 부모에게 overflow hidden 주는거 까묵지 말기-> flex 쓰면 상관없슴 */
+      }
+      /* float: 떠다닌다는 의미. 배치되는 방향 설정 */
+      #left {
+        float: left;
+        width: 150px;
+        background: red;
+        margin: 30px;
+      }
+      /* margin 값은 큰값 기준 설정된다는데 왤케 체감이 안되지? */
+      #right {
+        float: right;
+        width: 350px;
+        background: blue;
+        margin: 10px;
+      }
+      #top {
+        background: green;
+      }
+      #bottom {
+        background: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 행단위로 먼저 div 잡아줌 -->
+    <div id="top">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+    <div id="middle">
+      <div id="left">
+        Lorem ipsum dolor sit amet consectetur adipisicing. fdfdfgdg
+      </div>
+      <div id="right">
+        Lorem ipsum dolor sit amet consectetur adipisicing. asdasdasdads
+      </div>
+    </div>
+    <div id="bottom">Lorem ipsum dolor sit amet.</div>
+  </body>
+</html>
