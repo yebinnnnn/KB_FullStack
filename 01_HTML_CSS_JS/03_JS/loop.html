@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      arr = [1, 1, 1, 3, 3, 4, 5, 7, 8, 9];
+      for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+      }
+      for (let value in arr) {
+        console.log(value); //index 가 출력되는거임. 값을 원하면 of
+      }
+      let obj = { a: 1, b: 'hello', c: true };
+      for (const property in obj) {
+        console.log(property); //객체의 property 만 출력됨
+        console.log(obj[property]); //property 의 값을 원하는 경우. 오,,배열 인덱스 느낌
+      }
+
+      //forEach 메서드 (callback)
+      arr.forEach(function (value, index) {
+        console.log(index, value); //index 와 대응되는 value 값 한번에 확인 가능
+      }); //인자로 callback 요구
+
+      //출현 요소 카운트 방법
+      console.log('--arr배열에 저장된 요소들의 출현횟수를 출력하시오');
+
+      arr2 = [0];
+      for (let i = 0; i < arr.length; i++) {
+        arr2[i] = 0;
+      }
+      for (let j of arr) {
+        arr2[j]++;
+      }
+      for (let count of arr) {
+        console.log(`${count}의 출현횟수:${arr2[count]}`);
+      }
+
+      //년도에 해당하는 동물을 출력하시오
+      //년도를 12로 나눈 나머지가 0이면 원숭이띠.
+      // 1  닭 2  개 3  돼지 4  쥐 5  소 6 호랑이 7 토끼 8 용 9 뱀 10 말 11 양
+      let year = 1997;
+      switch (year % 12) {
+        case 0:
+          console.log('원숭이');
+          break;
+        case 1:
+          console.log('닭');
+          break;
+        case 2:
+          console.log('개');
+          break;
+        case 3:
+          console.log('돼지');
+          break;
+        case 4:
+          console.log('쥐');
+          break;
+        case 5:
+          console.log('소');
+          break;
+        case 6:
+          console.log('호랑이');
+          break;
+        case 7:
+          console.log('토끼');
+          break;
+        case 8:
+          console.log('용');
+          break;
+        default:
+          zodiac = '그 외의 동물';
+          console.log(zodiac);
+      }
+
+      //배열로 변환
+      year = 2030;
+      let jodiac = [
+        '원숭이',
+        '닭',
+        '개',
+        '돼지',
+        '쥐',
+        '소',
+        '호랑이',
+        '토끼',
+        '용',
+        '뱀',
+        '말',
+        '양',
+      ];
+      console.log(jodiac[year % 12]);
+    </script>
+  </head>
+  <body></body>
+</html>

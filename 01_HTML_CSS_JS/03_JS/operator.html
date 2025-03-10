@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //연산자 기본 문법 다양한 케이스
+      //산술연산자 : + - * / %
+      let a, b, c;
+      a = 2;
+      b = 3;
+      c = a / b;
+      console.log(c);
+      console.log(typeof c); //타입은 그냥 number
+      let d, e;
+      console.log(a + d); //연산이 안된다 -> NaN
+      console.log(a / 0);
+      b = a / 0;
+      c = b + a;
+      console.log(c); //Infinity 가 섞이면 계속 Infinity
+      //대입 연산자 : = += -= *= /= %=
+      e = 10;
+      a = '10';
+      console.log(a == e);
+      console.log(a === e); //자료형까지 비교
+      console.log(a >= e && e % 2 == 0);
+      console.log((a < e) & (e % 2 == 0)); //비트연산
+      console.log(++e);
+      console.log(e++); //후 증가
+      console.log(e, a);
+      //비교 연산자 : == === != !== equal 세개는 자료형까지 비교하는것. JS의 경우 문자 3 과 숫자 3 이 비교가 안된다.
+      //논리 연산자: && || !
+      //단항 연산자: ++ --
+      //삼항 연산자 케이스
+      e = a > 1 ? '1보다 크다' : '1보다 작다'; //e에 문자열 저장
+      console.log(e);
+      //형변환, 자동형변환, 강제 형변환
+      console.log('1' + '2'); //문자열 결합 연산자
+      console.log(1 + '2'); //섞인 경우 자동 문자열 결합
+      console.log(1 + 2);
+      console.log(1 + true); //연산 참여를 위해 true 가 1로 변환됨. ㅋㅋㅋ아니
+      console.log(1 / false); //진짜 병맛이네,,,
+      console.log('1' + true); //이번엔 true 가 문자열 결합으로 바뀜(마이너스 연산자면 자동 숫자...)
+      //강제 변환
+      console.log(String(1));
+      console.log(Number('45'));
+    </script>
+  </head>
+  <body>
+    <h1>연산자</h1>
+  </body>
+</html>

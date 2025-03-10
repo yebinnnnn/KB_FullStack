@@ -3,7 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>DataType</title>
+    <style></style>
+    <script>
+      // 변수자료형 확인(자료형 유동성)
+      //자바 스크립트의 변화형인 타입 스크립트는 정확한 자료형을 지정한다.
+      let a; //선언만 되고 타입이 없으면 undefined
+      console.log(typeof a);
+      a = 10;
+      console.log(typeof a);
+      a = [10, 20, 30]; //객체가 된다. (object)
+      console.log(typeof a);
+      a = 'Hello';
+      console.log(typeof a);
+      a = true;
+      console.log(typeof a);
+      a = function () {};
+      console.log(typeof a);
+      //대입되는 값에 따라서 자료형이 달라진다
+      a = {}; //얘 또한 객체
+      console.log(typeof a);
+    </script>
   </head>
-  <body></body>
+  <body>
+    <h1>Hello JS</h1>
+  </body>
 </html>
