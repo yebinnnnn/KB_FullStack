@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // JS 의 객체, 함수 기능
+      let person = {
+        name: '예빈',
+        address: '성남시',
+        point: 4,
+        print: function () {
+          console.log(
+            `이름: ${this.name}, 주소: ${this.address}, 포인트: ${this.point}`
+          );
+        },
+      };
+      person.print();
+      //alert, prompt 나 console 같은 기능은 이미 window. 이 앞이 붙은게 생략된 매서드들이다.
+      //(window 객체가 최상위 객체)
+      console.log(person.name);
+    </script>
+  </head>
+  <body>
+    <h1>JS 실습</h1>
+  </body>
+</html>

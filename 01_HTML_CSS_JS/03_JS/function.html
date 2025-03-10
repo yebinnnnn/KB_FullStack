@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //var 로 선언한 변수에 포함된 함수는 window 객체의 함수가 된다.
+      var a = function () {
+        alert('함수1');
+        console.log(this);
+      };
+      //this 가 윈도우 객체임을 확인할 수 있다.
+      //a(); //함수호출
+      //window 라는 내장 객체에 저장된 상태 (var 로 선언해야 함)
+      window.a();
+      let b = function () {
+        alert('함수2');
+        console.log(this);
+      };
+      b();
+      //let 으로 선언하면 window 객체에 포함되지 않음
+      //근데 b()로 실행하면 현재상태 this 는 window 객체를 의미한다.
+      let c = () => {
+        alert('함수3');
+        console.log(this);
+      };
+      c();
+      //셋 다 window 객체
+      //매개변수의 자료형을 미리 결정할 수 없음
+      let d = function (p1, p2) {
+        console.log(`매개변수 p1=${p1} 매개변수p2=${p2}`);
+      };
+      d(1, 'hello'); //매개변수가 부족해지면 undefined 됨.
+
+      console.log('--callback 함수 테스트--');
+      let f = function (p1, p2, p3) {
+        p1(p2, p3);
+      };
+      f(d, 2, '하이'); //함수 타입이 전달됨
+      //여기서 d 는 함수로 전달되는 함수로, 콜백함수라고 한다.
+      let num = 1;
+      let greeting = '변수 넣기 hello';
+      f(d, num, greeting); //변수 대입도 마찬가지로 가능
+      f(
+        (p1, p2) => {
+          console.log(`매개변수 p1=${p1} 매개변수p2=${p2}`);
+          console.log(this); //여기엔 window 객체가 보인다
+        },
+        1,
+        '함수 그대로 input'
+      );
+
+      //이미 내장되어 있는 객체들:
+      //window: 최상위 객체로, 생략가능.
+      let time = 3000; //ms 이므로 1000이 1초.
+      window.setTimeout(function () {
+        console.log('3초 후에 나타나요');
+      }, time); //물음표 인자는 생략가능 = 두번째 인자로 전달된 시간후에 첫번째 전달된 함수가 실행됨
+
+      window.setInterval(function () {
+        console.log('셋인터벌');
+      }, time);
+      //document
+      //location
+      //history
+    </script>
+  </head>
+  <body></body>
+</html>
