@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        //문서 객체 선택(clock)
+        // let clock = document.getElementById('clock');
+        // setInterval(function () {
+        //   let now = new Date();
+        //   clock.innerHTML = now.toString();
+        // }, 1000);
+      };
+      window.addEventListener('load', function () {
+        const bt1 = document.querySelector('form>input[type=button]');
+        bt1.addEventListener('click', function () {
+          const word = document.querySelector('form>input[type=text]');
+          console.log(word.value);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1 id="clock"></h1>
+    <form>
+      <label for="name">이름:</label>
+      <input id="name" name="name" type="text" size="30" value="기본" />
+      <input id="btn" type="button" value="전송" />
+    </form>
+  </body>
+</html>
