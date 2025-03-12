@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.addEventListener('load', function () {
+        let divObj = document.querySelector('div');
+        let aObj = document.querySelector('div>a'); //divObj.querySelect('a')
+
+        //divObj 객체가 클릭되면 할 일 START
+        divObj.addEventListener('click', function () {
+          divObj.style.backgroundColor = 'yellow';
+        });
+        //divObj 객체가 클릭되면 할 일 END
+        //--<a>태그용 객체에는 클릭용 기본이벤트 핸들러가 있다.:href 속성값에 해당하는 URL을 요청한다.
+        //기본 이벤트 핸들러를 막고싶다면?
+        //function(e) ->기본 이벤트용
+        aObj.addEventListener('click', function (e) {
+          aObj.innerHTML = '링크 구라';
+          e.preventDefault(); //처리 안한단 의미
+          //이벤트 전파 중지 원함. ->이제 div까지 클릭 전파 안됨.
+          e.stopPropagation();
+        });
+        //aObj 객체가 클리되면 할 일 START
+        //aObj 객체가 클리되면 할 일 END
+      });
+    </script>
+  </head>
+  <body>
+    <div
+      style="
+        background-color: gray;
+        height: 300px;
+        width: 300px;
+        border: solid 1px;
+      "
+    >
+      <a href="http://www.naver.com">링크</a>
+    </div>
+  </body>
+</html>
