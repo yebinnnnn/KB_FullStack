@@ -10,6 +10,7 @@ app.get('/', (req, res) => {
 });
 //app.post()
 
+//꼭 응답할때 JSON 형태로 반환하도록
 app.get('/product', (req, res) => {
   //   res.send('아메리카노, 아이스 아메리카노'); JSON 문자열 형태로도 응답가능
   const products = [
