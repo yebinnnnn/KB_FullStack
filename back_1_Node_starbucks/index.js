@@ -9,3 +9,35 @@ app.get('/', (req, res) => {
   res.send('WELCOME');
 });
 //app.post()
+
+app.get('/product', (req, res) => {
+  //   res.send('아메리카노, 아이스 아메리카노'); JSON 문자열 형태로도 응답가능
+  const products = [
+    { prodNo: 'C0001', prodName: '아메리카노', prodPrice: 1500 },
+    { prodNo: 'C0002', prodName: '아이스 아메리카노', prodPrice: 1500 },
+    { prodNo: 'C0003', prodName: '카페 라떼', prodPrice: 1500 },
+  ];
+  //json 문자 형태로 응답됨. (원래 이걸 백엔드가 보내주는디)
+  res.json(products);
+});
+
+//가변경로를 표시할땐 콜론을 쓰면 되고, req.params 를 통해 찾아가면 된다.
+app.get('/product/:prodNo', (req, res) => {
+  //   res.send(`${req.params.prodNo} 상품의 상세 내용입니다.`);
+  let product;
+  if (req.params.prodNo == 'C0001') {
+    product = { prodNo: 'C0001', prodName: '카페 라떼', prodPrice: 1500 };
+  } else {
+    product = {
+      prodNo: '그 외의 상품',
+      prodName: '그 외의 상품',
+      prodPrice: 0,
+    };
+  }
+  res.json(product);
+});
+
+//사용자 연결 감시
+app.listen(port, () => {
+  console.log('3000번 포트에서 backend server 실행중...');
+});
