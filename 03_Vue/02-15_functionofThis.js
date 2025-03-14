@@ -1,4 +1,5 @@
 var obj = { result: 0 };
+//여기 네가지 경우의 수에 대해 정리 하기
 /*
  일반함수(이름 있는 함수, 이름 없는 함수)에서의 this :
  화살표 함수는 자기스코프의 this를 그대로 참조
@@ -64,3 +65,4 @@ console.log(result); // 7
 // };
 // obj.add(3, 4);//1.실행
 // console.log(obj); // { result: 0, add: [Function (anonymous)] }
+//window 와 GLOBAL 을 굳이 안나눠도 됨
