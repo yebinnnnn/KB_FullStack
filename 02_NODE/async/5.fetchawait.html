@@ -137,13 +137,24 @@
       window.addEventListener('load', async () => {
         //1 -> 1-1 -> 2 -> 3 -> 4 -> NEXT STEP
         console.log('1');
-        const p = fetch('http://localhost:3000/product');
-        console.log('1-1');
-        const arr = await p.then((res) => {
+        // const p = fetch('http://localhost:3000/product');
+        // console.log('1-1');
+        // //NEXT STEP 대신 await 함수가 끝날때까지 기다린다.
+        // const arr = await p.then((res) => {
+        //   console.log('2');
+        //   const arr = res.json();
+        //   return arr;
+        // });
+
+        //아래처럼 쓸 수 있다.
+        //fetch 함수가 될때까지 기다렸다가 then 하는게 아니라 fetch 함수의 then이
+        //응답될때까지 기다림
+        const arr = await fetch('http://localhost:3000/product').then((res) => {
           console.log('2');
           const arr = res.json();
           return arr;
         });
+
         console.log('3');
 
         innerHTML = '';
