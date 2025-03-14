@@ -2,6 +2,8 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const cors = require('cors');
+app.use(cors());
 
 //get 요청이 되었을때 할 일을 적어주는 공간
 //슬래시 안에 루트URL, req res 로 콜백함수 실행

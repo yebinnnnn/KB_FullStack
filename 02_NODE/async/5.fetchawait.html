@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetch함수</title>
+    <script>
+      //   window.addEventListener('load', async () => {
+      //     //1 -> NEXT STEP -> 2 -> 3 -> 4
+      //     console.log('1');
+      //     //여기서부터 XMLHTTPRequest 사용 시작
+      //     const xhttp = new XMLHttpRequest();
+      //     //load 이벤트 비동기 일처리의 응답이 왔을때 할 일 (로그 순서대로 찍힘)
+      //     xhttp.onload = function () {
+      //       console.log('2');
+      //       const arr = JSON.parse(this.responseText);
+
+      //       console.log('3');
+      //       innerHTML = '';
+      //       innerHTML += '<ul>';
+      //       arr.forEach((obj) => {
+      //         innerHTML += '<li>';
+      //         innerHTML += obj.prodName;
+      //         innerHTML += '</li>';
+      //       });
+      //       innerHTML += '</ul>';
+      //       const divObj = document.querySelector('div');
+      //       divObj.innerHTML = innerHTML;
+
+      //       console.log('4');
+      //     };
+      //     //여기까지가 응답이 왔을때 할 일. 비동기 일처리
+      //     xhttp.open('GET', 'http://localhost:3000/product'); //http://localhost:3000/product/list?currentPage=1
+      //     xhttp.send();
+
+      //     console.log('NEXT STEP'); //NEXT STEP 이 2번보다 먼저 처리될 수 있음. (비동기이기 때문에)
+      //   });
+
+      //   window.addEventListener('load', () => {
+      //     //1 -> NEXT STEP -> 2 -> 3 -> 4
+      //     console.log('1');
+      //     //Promise 로 둘러쌌음. resolve 함수 호출 시 then 함수가 자동으로 호출
+      //     new Promise(function (resolve, reject) {
+      //       const xhttp = new XMLHttpRequest();
+      //       xhttp.onload = function () {
+      //         console.log('2');
+      //         const arr = JSON.parse(this.responseText);
+      //         resolve(arr); //응답이 돼야 resolve 한다. 요청하고-> 응답이 돼야 -> then절 처리
+      //         //할일을  resolve()로 대신
+      //       };
+      //       xhttp.open('GET', 'http://localhost:3000/product'); //http://localhost:3000/product/list?currentPage=1
+      //       xhttp.send();
+      //     })
+      //       .then((arr) => {
+      //         console.log('3');
+      //         innerHTML = '';
+      //         innerHTML += '<ul>';
+      //         arr.forEach((obj) => {
+      //           innerHTML += '<li>';
+      //           innerHTML += obj.prodName;
+      //           innerHTML += '</li>';
+      //         });
+      //         innerHTML += '</ul>';
+      //         const divObj = document.querySelector('div');
+      //         divObj.innerHTML = innerHTML;
+      //       })
+      //       .then(() => {
+      //         console.log('4');
+      //       });
+      //     //여전히 NEXT STEP 이 올진 모르나 일반적으로 NEXT STEP 이 늦을 것.
+      //     console.log('NEXT STEP');
+      //   });
+
+      //fetch 함수
+      //   window.addEventListener('load', () => {
+      //     //1 -> NEXT STEP -> 2 -> 3 -> 4
+      //     console.log('1');
+      //     //응답내용을 json 객체로 반환
+      //     fetch('http://localhost:3000/product')
+      //       .then((res) => {
+      //         //콜백매개변수가 응답 객체.
+      //         console.log('2');
+      //         const arr = res.json();
+      //         return arr; //이 arr 이 두번째 then 의 매개변수가 됨.
+      //       })
+      //       .then((arr) => {
+      //         console.log('3');
+      //         innerHTML = '';
+      //         innerHTML += '<ul>';
+      //         arr.forEach((obj) => {
+      //           innerHTML += '<li>';
+      //           innerHTML += obj.prodName;
+      //           innerHTML += '</li>';
+      //         });
+      //         innerHTML += '</ul>';
+      //         const divObj = document.querySelector('div');
+      //         divObj.innerHTML = innerHTML;
+      //       })
+      //       .then(() => {
+      //         console.log('4');
+      //       });
+      //     console.log('NEXT STEP');
+      //   });
+
+      //이런 fetch 도 사용이 복잡해서 나중에 axios 라이브러리 씀
+      //   window.addEventListener('load', () => {
+      //     //1 -> 1-1 -> NEXT STEP -> 2 -> 3 -> 4
+      //     console.log('1');
+      //     const p = fetch('http://localhost:3000/product');
+      //     //여기까지는 동기 일처리.
+      //     console.log('1-1'); //그래서 1-1 이 다음에 실행됨
+      //     p.then((res) => {
+      //       console.log('2');
+      //       const arr = res.json();
+      //       return arr;
+      //     })
+      //       .then((arr) => {
+      //         console.log('3');
+      //         innerHTML = '';
+      //         innerHTML += '<ul>';
+      //         arr.forEach((obj) => {
+      //           innerHTML += '<li>';
+      //           innerHTML += obj.prodName;
+      //           innerHTML += '</li>';
+      //         });
+      //         innerHTML += '</ul>';
+      //         const divObj = document.querySelector('div');
+      //         divObj.innerHTML = innerHTML;
+      //       })
+      //       .then(() => {
+      //         console.log('4');
+      //       });
+      //     console.log('NEXT STEP');
+      //   });
+
+      //await 활용
+      window.addEventListener('load', async () => {
+        //1 -> 1-1 -> 2 -> 3 -> 4 -> NEXT STEP
+        console.log('1');
+        const p = fetch('http://localhost:3000/product');
+        console.log('1-1');
+        const arr = await p.then((res) => {
+          console.log('2');
+          const arr = res.json();
+          return arr;
+        });
+        console.log('3');
+
+        innerHTML = '';
+        innerHTML += '<ul>';
+        arr.forEach((obj) => {
+          innerHTML += '<li>';
+          innerHTML += obj.prodName;
+          innerHTML += '</li>';
+        });
+        innerHTML += '</ul>';
+        const divObj = document.querySelector('div');
+        divObj.innerHTML = innerHTML;
+        console.log('4');
+        console.log('NEXT STEP');
+      });
+    </script>
+  </head>
+
+  <body>
+    <div></div>
+  </body>
+</html>
