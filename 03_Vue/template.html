@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 기본 Vue 템플릿 형태 -->
+    <div id="app">
+      <!-- 이 영역을 Vue가 처리하겠다는 의미로 div id 사용 -->
+      <!-- 메세지는 변수명 -->
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let model = { message: 'Hello Vue!' };
+      //   메세지 property 제공
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {};
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
