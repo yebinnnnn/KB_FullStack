@@ -1,4 +1,5 @@
 //Spread 연산자 관련
+//객체의 내용을 펼쳐서 새로운 객체에 넣는다는 의미가 있음 = Spread
 
 let obj1 = { name: '박문수', age: 29 };
 let obj2 = obj1; //obj1, obj2 는 동일한 객체를 참조.
@@ -16,6 +17,8 @@ console.log(obj1 == obj3); //false
 
 let arr1 = [100, 200, 300];
 let arr2 = ['hello', ...arr1, 'world'];
+let arr3 = ['hello', arr1, 'world'];
 console.log(arr1); // [ 100, 200, 300 ]
 console.log(arr2); // [ "hello", 100, 200, 300, "world" ]
+console.log(arr3); //배열 자체가 안에 삽입됨.
 console.log(arr1 + [, 400, 500, 600]);
