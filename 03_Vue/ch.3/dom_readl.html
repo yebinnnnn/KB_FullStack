@@ -41,6 +41,7 @@ Repaint: 변경된 요소의 스타일이나 내용이 변경되면 브라우저
     </div>
 
     <script>
+      // DOMContentLoaded 는 load 와 달리 돔트리가 완성되면 바로 실행
       document.addEventListener('DOMContentLoaded', function () {
         // var app = document.getElementById('app');
         var div = document.querySelector('#app>div');
@@ -52,6 +53,8 @@ Repaint: 변경된 요소의 스타일이나 내용이 변경되면 브라우저
         d.addEventListener('focus', () => {
           d.value = 'a'; //실제DOM 변경 ( a -> a)
         });
+        // value 는 a로 그대로인데도 click 하면서 focus 될때마다 리플로우와 리페인트가
+        //두번씩 비효율적으로 실행된다.
       });
     </script>
   </body>

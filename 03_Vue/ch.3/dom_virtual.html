@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가상 DOM 학습</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input
+        type="text"
+        class="d"
+        @click="handleClick"
+        @focus="handleFocus"
+        ref="d"
+        value="이곳을클릭하세요"
+      />
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        methods: {
+          handleClick() {
+            this.$refs.d.value = 'a'; //가상DOM 변경(이곳을클릭하세요 -> a), 실제DOM 변경(이곳을클릭하세요 -> a)
+          },
+          handleFocus() {
+            this.$refs.d.value = 'a'; //가상DOM 변경(a->a), 실제DOM 변경안함(a)
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
