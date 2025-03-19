@@ -22,6 +22,7 @@
       new Vue({
         el: '#app',
         methods: {
+          //여기서 ""가상돔""의 value 를 바꾸고 , 실제돔과 비교한다.
           handleClick() {
             this.$refs.d.value = 'a'; //가상DOM 변경(이곳을클릭하세요 -> a), 실제DOM 변경(이곳을클릭하세요 -> a)
           },
