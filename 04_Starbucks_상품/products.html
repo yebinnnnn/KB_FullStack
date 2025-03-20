@@ -9,9 +9,14 @@
     <div class="products">
       <div class="table">
         <!-- div 를 동적바인드로 상품의 갯수 만큼 생성하기 -->
-        <div v-for="p in products" : key="p.prodNo">
+        <div
+          v-for="p in products"
+          :key="p.prodNo"
+          :class="`td ${p.prodNo}`"
+          @click="clickProduct"
+        >
           <ul>
-            <li><img src="" alt="p.prodName" /></li>
+            <li><img :src="`./images/${p.prodNo}.jpg`" :alt="p.prodName" /></li>
             <li>{{p.prodName}}</li>
           </ul>
         </div>
@@ -19,20 +24,46 @@
     </div>
     <script type="text/javascript" src="https://unpkg.com/vue"></script>
     <script>
-      Vue.createApp({
+      const vm = Vue.createApp({
         data() {
           return {
             products: [],
           };
         },
+        //라이프사이클용 함수에서 패치 직접 설정 (맨 위 코드)
+        //this 쓰는것에 주의하기~!!
         async mounted() {
-          let url = 'http://localhost:3000/product';
-          //products 배열 객체 채우기
-          this.products = await fetch(url).then((res) => {
-            return res.json();
-          });
+          // let url = 'http://localhost:3000/product';
+          // //products 배열 객체 채우기
+          // //model 에 접근하기 위해 this 로 접근 (this 빼면 접근안됨)
+          // this.products = await fetch(url).then((res) => {
+          //   return res.json();
+          // });
+          //methdos 함수로 옮기고 여기서 await this로 라이프사이클 관리해줘도 된다.
+          this.products = await this.requestProducts();
+          cosole.log(this.products);
         },
-      }).mount('.products');
+        //일반함수에서 설정
+        methods: {
+          requestProducts() {
+            let url = 'http://localhost:3000/product';
+            return fetch(url).then((res) => {
+              return res.json();
+            });
+          },
+          clickProduct() {
+            //this -> vm 객체
+            //event.target -> img 와 li 객체. (실제 이벤트가 발생한곳!!!!!!!)
+            //event.currentTarget -> div 객체. 이벤트가 발생한 곳의 객체.
+            const prodNo = event.currentTarget
+              .getAttribute('class')
+              .split(' ')[1];
+            location.href = './product.html?prodNo=' + prodNo; //상품 상세 요청
+            event.stopPropagation();
+          },
+        },
+      });
+      vm.mount('.products');
     </script>
   </body>
 </html>

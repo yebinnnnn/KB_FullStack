@@ -16,7 +16,11 @@ app.get('/', (req, res) => {
 app.get('/product', (req, res) => {
   //   res.send('아메리카노, 아이스 아메리카노'); JSON 문자열 형태로도 응답가능
   const products = [
-    { prodNo: 'C0001', prodName: '아메리카노', prodPrice: 1500 },
+    {
+      prodNo: 'C0001',
+      prodName: '아메리카노',
+      prodPrice: 1500,
+    },
     { prodNo: 'C0002', prodName: '아이스 아메리카노', prodPrice: 1500 },
     { prodNo: 'C0003', prodName: '카페 라떼', prodPrice: 1500 },
   ];
@@ -28,8 +32,24 @@ app.get('/product', (req, res) => {
 app.get('/product/:prodNo', (req, res) => {
   //   res.send(`${req.params.prodNo} 상품의 상세 내용입니다.`);
   let product;
+  const { prodNo } = req.params;
+
   if (req.params.prodNo == 'C0001') {
-    product = { prodNo: 'C0001', prodName: '카페 라떼', prodPrice: 1500 };
+    product = {
+      prodNo: 'C0001',
+      prodName: '나이트로 바닐라 크림 라떼',
+      prodPrice: 1500,
+    };
+  } else if (req.params.prodNo == 'C0002') {
+    product = {
+      prodNo: 'C0002',
+      prodName: '리저브 카페 라떼',
+      prodPrice: 1500,
+    };
+  } else if (req.params.prodNo == 'C0003') {
+    product = { prodNo: 'C0003', prodName: '핫 아메리카노', prodPrice: 1500 };
+  } else if (req.params.prodNo == 'C0004') {
+    product = { prodNo: 'C0004', prodName: '핫 카페라테', prodPrice: 1500 };
   } else {
     product = {
       prodNo: '그 외의 상품',

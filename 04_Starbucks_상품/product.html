@@ -7,12 +7,12 @@
   </head>
   <body>
     <!-- 이게 보간법-->
-    <div class="product">
-      {{p}} {{name}}
+    <div id=app" class="product">
+      {{p.prodName}}
       <!-- 속성값의 위치에선 보간법을 못쓴다 -->
       <!-- 속성값에 객체값을 쓰는방법. 오오옹~~~ -->
       <img
-        :src="`./images/${p.prodNo}.png`"
+        :src="'./images/' + p.prodNo + '.jpg'"
         :alt="`${p.prodName}상품의 이미지 입니다.`"
       />
       <hr />
