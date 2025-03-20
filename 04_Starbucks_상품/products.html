@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="products">
+      <div class="table">
+        <!-- div 를 동적바인드로 상품의 갯수 만큼 생성하기 -->
+        <div v-for="p in products" : key="p.prodNo">
+          <ul>
+            <li><img src="" alt="p.prodName" /></li>
+            <li>{{p.prodName}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            products: [],
+          };
+        },
+        async mounted() {
+          let url = 'http://localhost:3000/product';
+          //products 배열 객체 채우기
+          this.products = await fetch(url).then((res) => {
+            return res.json();
+          });
+        },
+      }).mount('.products');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상품상세</title>
+  </head>
+  <body>
+    <!-- 이게 보간법-->
+    <div class="product">
+      {{p}} {{name}}
+      <!-- 속성값의 위치에선 보간법을 못쓴다 -->
+      <!-- 속성값에 객체값을 쓰는방법. 오오옹~~~ -->
+      <img
+        :src="`./images/${p.prodNo}.png`"
+        :alt="`${p.prodName}상품의 이미지 입니다.`"
+      />
+      <hr />
+      <div class="detail">
+        <ul>
+          <li class="prodNo">{{p.prodNo}}</li>
+          <li class="prodName">{{p.prodName}}</li>
+          <li class="quantity">
+            <input type="number" value="1" min="1" max="99" />
+          </li>
+          <li><button>장바구니 담기</button></li>
+        </ul>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script>
+      //프록시를 만들어주는 작업. Vue.createApp
+      Vue.createApp({
+        name: 'Product',
+        data() {
+          //data 함수는 return 이 꼭 필요하고, return 에는 객체가 온다.
+          return {
+            // prod: { prodNum: 'C0001', prodName: '카페라떼' },
+            // name: 'hello',
+            //백엔드로 여기를 채워보자!
+            p: {},
+          };
+        },
+        async mounted() {
+          //자바스크립트 내장객체 : window, document, location, history 등.
+          //location 은 웹브라우저의 주소 영역을 관리한다.
+          //const prodNo = location.search;
+          //http://localhost:5501/product.html?prodNo=C0001
+          //http://localhost:5500/product.html?prodNo=C0002
+          console.log(location.search.substring(1));
+          console.log(location.search.substring(1).split('=')[0]);
+
+          const prodNo = location.search.substring(1).split('=')[1];
+
+          let url = `http://localhost:3000/product/${prodNo}`;
+          console.log(url);
+          this.p = await fetch(url).then((res) => {
+            return res.json(); //json 문자열 형태의 응답내용을 JS객체로 반환 해주는 함수
+          });
+        },
+      }).mount('.product');
+    </script>
+  </body>
+</html>
