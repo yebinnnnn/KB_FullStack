@@ -3,18 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>상품목록</title>
   </head>
   <body>
-    <div class="products">
+    <div id="app">
       <div class="table">
         <!-- div 를 동적바인드로 상품의 갯수 만큼 생성하기 -->
         <div
           v-for="p in products"
           :key="p.prodNo"
           :class="`td ${p.prodNo}`"
-          @click="clickProduct"
+          @click.stop="clickProduct"
         >
+          <!-- stop 해주면 더 전파안됨 -->
           <ul>
             <li><img :src="`./images/${p.prodNo}.jpg`" :alt="p.prodName" /></li>
             <li>{{p.prodName}}</li>
@@ -63,7 +64,7 @@
           },
         },
       });
-      vm.mount('.products');
+      vm.mount('#app'); //여기 #app 쓰는건 관례인거지 다른 클래스나 id 가 와도 된다.
     </script>
   </body>
 </html>

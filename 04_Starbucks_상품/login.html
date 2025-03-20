@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- prevent 를 쓰면 기본 이벤트 처리를 막는다. -->
+      <form @submit.prevent="submitForm" action="http://www.naver.com">
+        <!-- : 는 단방향처리. 뷰 영역에 나타나게 하는 것 까지만 영향을 준다. -->
+        <input type="text" v-model="id" placeholder="아이디 입력하세요" /><br />
+        <input
+          type="password"
+          v-model="password"
+          placeholder="비밀번호 입력하세요"
+        /><br />
+        <input type="checkbox" v-model="savedId" />아이디저장<br />
+        <button @click="clickLoginbutton">로그인</button>
+      </form>
+      <!-- 버튼이 클릭되면 버튼 클릭이벤트 발생
+       폼의 submit 이벤트 발생, 
+       폼의 submit 이벤트의 디폴트핸들러가 처리됨. 
+       폼의 action 속성값에 해당하는 URL 로 입력값들 전송.
+       GET 방식으로 지금 사용중인 URL 로 요청 -->
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script>
+      Vue.createApp({
+        //옵션 객체
+        name: 'Login',
+        data() {
+          return {
+            //데이터(Model)
+            id: 'id99',
+            password: 'passwordnumber',
+            saveId: true,
+          };
+        },
+        methods: {
+          clickLoginbutton() {
+            alert('button클릭됨');
+          },
+          submitForm(event) {
+            alert('form 제출됨');
+            event.preventDefault(); //이제 naver 로 이동 안됨ㅎ submit의 디폴트핸들러 막음
+            //@submit.prevent 로도 가능. 둘다 쓸 수 있다~
+            console.log(this.id, this.password, this.saveId);
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

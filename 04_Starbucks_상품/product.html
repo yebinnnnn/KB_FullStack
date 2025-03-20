@@ -7,8 +7,8 @@
   </head>
   <body>
     <!-- 이게 보간법-->
-    <div id=app" class="product">
-      {{p.prodName}}
+    <div id="app">
+      {{p}}
       <!-- 속성값의 위치에선 보간법을 못쓴다 -->
       <!-- 속성값에 객체값을 쓰는방법. 오오옹~~~ -->
       <img
@@ -58,7 +58,7 @@
             return res.json(); //json 문자열 형태의 응답내용을 JS객체로 반환 해주는 함수
           });
         },
-      }).mount('.product');
+      }).mount('#app');
     </script>
   </body>
 </html>
