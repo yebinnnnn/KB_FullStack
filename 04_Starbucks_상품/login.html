@@ -8,13 +8,21 @@
   <body>
     <div id="app">
       <!-- prevent 를 쓰면 기본 이벤트 처리를 막는다. -->
-      <form @submit.prevent="submitForm" action="http://www.naver.com">
+      <!-- <form @submit.prevent="submitForm" action="http://www.naver.com"> -->
+      <form @submit.prevent="submitForm">
+        <!-- <form method="post" action="http://localhost:3000/login"> -->
         <!-- : 는 단방향처리. 뷰 영역에 나타나게 하는 것 까지만 영향을 준다. -->
-        <input type="text" v-model="id" placeholder="아이디 입력하세요" /><br />
+        <input
+          type="text"
+          v-model="customer.id"
+          placeholder="아이디 입력하세요"
+          name="id"
+        /><br />
         <input
           type="password"
-          v-model="password"
+          v-model="customer.password"
           placeholder="비밀번호 입력하세요"
+          name="password"
         /><br />
         <input type="checkbox" v-model="savedId" />아이디저장<br />
         <button @click="clickLoginbutton">로그인</button>
@@ -33,20 +41,65 @@
         data() {
           return {
             //데이터(Model)
-            id: 'id99',
-            password: 'passwordnumber',
-            saveId: true,
+            // //id passwrord 각각으로 보내지 말고 객체로 묶어 보내자
+            // id: 'id99',
+            // password: 'passwordnumber',
+            // saveId: true,
+            customer: {
+              id: 'id00',
+              password: 'pass00',
+            },
+            savedId: true,
           };
         },
         methods: {
           clickLoginbutton() {
             alert('button클릭됨');
           },
-          submitForm(event) {
+          async submitForm(event) {
             alert('form 제출됨');
             event.preventDefault(); //이제 naver 로 이동 안됨ㅎ submit의 디폴트핸들러 막음
             //@submit.prevent 로도 가능. 둘다 쓸 수 있다~
-            console.log(this.id, this.password, this.saveId);
+            console.log(this.customer.id, this.customer.password, this.savedId);
+
+            const url = 'http://localhost:3000/login';
+            const params = new URLSearchParams();
+            params.append('id', this.customer.id);
+            params.append('password', this.customer.password);
+            //기존 내용을 지우지 않고 응답을 받기 위해 비동기 처리
+            console.log(params.toString());
+            const requestInit = {
+              method: 'POST',
+              body: params,
+              headers: {
+                //요청 바디의 형식
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+            };
+            // fetch(url, requestInit)
+            //   .then((res) => {
+            //     //1.요청하기 2.응답받기
+            //     const responseData = res.text(); //응답내용을 문자열로 얻기. 반환형:Promise 타입
+            //     return responseData;
+            //   })
+            //   .then((responseData) => {
+            //     //저 뒤의 응답된 내용이 여기 들어온다.
+            //     //로그인 실패로 옴 ㅋㅋ
+            //     alert(responseData);
+            //   })
+            //   .catch((err) => {
+            //     //2-2 실패된 응답받기
+            //     alert(err.message);
+            //   });
+            //await async 함수로 바꿔보기
+            try {
+              const res = await fetch(url, requestInit);
+              const responseData = await res.text();
+              alert(responseData);
+            } catch (err) {
+              //2-2 실패된 응답받기
+              alert(err.message);
+            }
           },
         },
       }).mount('#app');

@@ -5,6 +5,9 @@ const port = 3000;
 const cors = require('cors');
 app.use(cors());
 
+//요청 json 형태로 받아서 사용하려면 이거 꼭 써야함.;;;
+app.use(express.json());
+
 //get 요청이 되었을때 할 일을 적어주는 공간
 //슬래시 안에 루트URL, req res 로 콜백함수 실행
 app.get('/', (req, res) => {
@@ -58,6 +61,28 @@ app.get('/product/:prodNo', (req, res) => {
     };
   }
   res.json(product);
+});
+
+//회원관련 백 코드
+let customers = [{ id: 'id00', password: 'pass00' }]; //고객저장소
+function findById(id) {
+  //배열 요소 찾아내는 함수
+  return customers.find((element) => element.id === id);
+}
+//http://localhost:3000/login
+//post 함수 쓰기
+app.post('/login', (req, res) => {
+  // if (!req.body.id || req.body.id == 'admin') {
+  console.log(req.body.id, req.body.password);
+  const c = findById(req.body.id);
+  if (!req.body.id || !c || c.password !== req.body.password) {
+    //Id 가 없거나 일치하지 않거나 등...
+    res.status(400);
+    res.send('로그인 실패');
+  } else {
+    res.status(200);
+    res.send('로그인 성공');
+  }
 });
 
 //사용자 연결 감시
