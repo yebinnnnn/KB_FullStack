@@ -85,6 +85,20 @@ app.post('/login', (req, res) => {
   }
 });
 
+app.post('/signup', (req, res) => {
+  const { id, pwd, name } = req.body;
+  console.log(req.body.id, req.body.password);
+
+  const exUser = customers.find((u) => u.id === id);
+  if (exUser) {
+    return res.status(400).send('아이디가 존재합니다');
+  }
+
+  customers.push({ id, pwd, name });
+
+  res.status(201).send('회원가입 성공');
+});
+
 //사용자 연결 감시
 app.listen(port, () => {
   console.log('3000번 포트에서 backend server 실행중...');
