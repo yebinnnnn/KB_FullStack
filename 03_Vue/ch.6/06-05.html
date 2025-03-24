@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .buttonColor {
+        background-color: wheat;
+        color: black;
+      }
+      .buttonLayout {
+        text-align: center;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <button class="staticBorder" :class="[myColor, isMyCheck?myLayout:' ']">
+        테스트 버튼
+      </button>
+      <input type="checkbox" v-model="isMyCheck" />
+      레이아웃 적용
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let model = { message: 'Hello Vue!' };
+      //   메세지 property 제공
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            myColor: 'buttonColor',
+            myLayout: 'buttonLayout',
+            isMyCheck: false,
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
