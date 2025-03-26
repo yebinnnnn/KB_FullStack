@@ -5,10 +5,10 @@
 </template>
 <script>
 export default {
-  name: 'Child1',
+  name: 'Child3',
 };
 </script>
-<style>
+<style scoped>
 .child {
   background-color: orange;
 

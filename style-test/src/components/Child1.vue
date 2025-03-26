@@ -8,7 +8,7 @@ export default {
   name: 'Child1',
 };
 </script>
-<style>
+<style scoped>
 .child {
   background-color: yellow;
 

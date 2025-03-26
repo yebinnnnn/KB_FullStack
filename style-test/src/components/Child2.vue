@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: 'Child1',
+  name: 'Child2',
 };
 </script>
 <style scoped>
