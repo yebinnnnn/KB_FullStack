@@ -26,6 +26,26 @@ app.get('/product', (req, res) => {
     },
     { prodNo: 'C0002', prodName: '아이스 아메리카노', prodPrice: 1500 },
     { prodNo: 'C0003', prodName: '카페 라떼', prodPrice: 1500 },
+    {
+      prodNo: 'C0004',
+      prodName: '아이스라테',
+      prodPrice: 2000,
+    },
+    {
+      prodNo: 'C0005',
+      prodName: '콜드브루몰트',
+      prodPrice: 2500,
+    },
+    {
+      prodNo: 'C0006',
+      prodName: '카페브레베',
+      prodPrice: 3500,
+    },
+    {
+      prodNo: 'C0007',
+      prodName: '바닐라라떼',
+      prodPrice: 3500,
+    },
   ];
   //json 문자 형태로 응답됨. (원래 이걸 백엔드가 보내주는디)
   res.json(products);

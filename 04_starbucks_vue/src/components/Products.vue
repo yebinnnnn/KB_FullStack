@@ -1,6 +1,7 @@
 <script>
 import ProductItem from './ProductItem.vue';
 import Search from './Search.vue';
+// 여기서도 자식 객체가 존재. (Productitem, Search)
 export default {
   name: 'Products',
   components: { ProductItem, Search },
@@ -53,6 +54,7 @@ export default {
       @click.stop="clickProduct"
       v-bind:childProduct="p"
     />
+    <!-- 전달하기 위해 자식의 Props 사용중 (childProduct) -->
   </div>
 </template>
 <style scoped>
