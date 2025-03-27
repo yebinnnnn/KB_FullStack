@@ -1,8 +1,9 @@
 <script>
 import CheckboxItem from './components/CheckboxItem.vue';
+import NoSlotTest from './components/NoSlotTest.vue';
 export default {
   name: 'App',
-  components: { CheckboxItem },
+  components: { CheckboxItem, NoSlotTest },
   data() {
     return {
       checkboxData: 'ONE',
@@ -12,6 +13,8 @@ export default {
 </script>
 
 <template>
+  <div><NoSlotTest /></div>
+  <hr />
   <p>슬롯 : 부모컴포넌트에서 자식 컴포넌트로 정보를 전달하는 방법이다.</p>
   <ul>
     <!-- li요소를 자식 컴포넌트로 옮겨보자! -->
