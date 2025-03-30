@@ -8,7 +8,7 @@ const currentPage = ref(1);
 
 onMounted(async () => {
   console.log('mounted');
-  products = await this.requestProducts();
+  products = await requestProducts();
   console.log(products);
 });
 const requestProducts = () => {
