@@ -93,9 +93,9 @@ function findById(id) {
 //post 함수 쓰기
 app.post('/login', (req, res) => {
   // if (!req.body.id || req.body.id == 'admin') {
-  console.log(req.body.id, req.body.password);
+  console.log(req.body.id, req.body.pwd);
   const c = findById(req.body.id);
-  if (!req.body.id || !c || c.password !== req.body.password) {
+  if (!req.body.id || !c || c.pwd !== req.body.pwd) {
     //Id 가 없거나 일치하지 않거나 등...
     res.status(400);
     res.send('로그인 실패');
