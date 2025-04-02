@@ -28,10 +28,10 @@ const submitForm = async (event) => {
   params.append('pwd', customer.pwd);
 
   try {
-    axios.post(url, params);
+    await axios.post(url, params);
   } catch (err) {
     //상태코드값이 200번이 아닌 경우
-    alert(responseData); //로그인 실패
+    alert(err.responseData); //로그인 실패
     router.push('/');
   }
 
@@ -43,18 +43,18 @@ const submitForm = async (event) => {
     },
   };
 
-  try {
-    const res = await fetch(url, requestInit); //1.요청하기 2-1.성공된 응답받기
-    const responseData = await res.text(); //3.응답내용을 문자열로 얻기
-    //4.응답내용 문자열
-    if (res.status == 200) {
-      router.push('/');
-    }
-    alert(responseData);
-  } catch (err) {
-    //2-2.실패된 응답받기 :  네트워크 오류, 잘못된 URL
-    alert(err.message);
-  }
+  // try {
+  //   const res = await fetch(url, requestInit); //1.요청하기 2-1.성공된 응답받기
+  //   const responseData = await res.text(); //3.응답내용을 문자열로 얻기
+  //   //4.응답내용 문자열
+  //   if (res.status == 200) {
+  //     router.push('/');
+  //   }
+  //   alert(responseData);
+  // } catch (err) {
+  //   //2-2.실패된 응답받기 :  네트워크 오류, 잘못된 URL
+  //   alert(err.message);
+  // }
 };
 
 const clickLoginButton = () => {
