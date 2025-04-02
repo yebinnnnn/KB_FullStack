@@ -6,7 +6,13 @@ const p = reactive({});
 onMounted(async () => {
   const currentRoute = useRoute();
   const query = currentRoute.query;
-  const prodNo = query.prodNo;
+  // const prodNo = query.prodNo;
+  // let url = `http://localhost:3000/product/${prodNo}`;
+  // console.log(url);
+
+  //PATH variable 을 사용할때
+  const param = currentRoute.params;
+  const prodNo = param.prodNo;
   let url = `http://localhost:3000/product/${prodNo}`;
   console.log(url);
 
@@ -23,7 +29,7 @@ onMounted(async () => {
 <template lang="">
   <div>
     <img
-      :src="'./images/' + p.prodNo + '.jpg'"
+      :src="'/images/' + p.prodNo + '.jpg'"
       :alt="`${p.prodName}상품의 이미지 입니다.`"
     />
     <hr />

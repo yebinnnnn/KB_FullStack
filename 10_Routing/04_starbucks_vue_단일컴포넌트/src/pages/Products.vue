@@ -2,11 +2,13 @@
 import ProductItem from '@/pages/ProductItem.vue';
 import Search from '@/pages/Search.vue';
 import { ref, reactive, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 
 const router = useRouter();
 const products = reactive([]);
 const currentPage = ref(1);
+const currentRoute = useRoute();
+
 onMounted(async () => {
   console.log('mounted');
   Object.assign(products, await requestProducts());
@@ -26,13 +28,15 @@ const clickProduct = (event) => {
   const prodNo = event.currentTarget.getAttribute('class').split(' ')[1]; //[0]는 td, [1]는 C0001
 
   //location.href = './product.html?prodNo=' + prodNo; //상품상세요청
-  const path = '/product?prodNo=' + prodNo;
+  const path = '/product/' + prodNo;
   router.push(path);
   // event.stopPropagation(); 대신 @click.stop수식어사용가능
 };
 </script>
 <template>
   <Search @searchProductEvent="childEventHandler" />
+  <router-view :key="currentRoute.params.prodNo"></router-view>
+
   <div class="table">
     <ProductItem
       v-for="p in products"

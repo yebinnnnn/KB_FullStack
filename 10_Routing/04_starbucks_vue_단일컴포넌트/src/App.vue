@@ -28,5 +28,5 @@ import { RouterView } from 'vue-router';
 </template>
 
 <style scoped>
-/* @import url('basic.css'); */
+/* @import url('/src/assets/base.css'); */
 </style>
