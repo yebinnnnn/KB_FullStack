@@ -4,4 +4,8 @@ import './assets/main.css';
 import { createApp } from 'vue';
 import App from './App.vue';
 
-createApp(App).mount('#app');
+//createApp(App).mount('#app');
+import router from './router'; //./router/index.js 로 적어도 됨.
+const app = createApp(App);
+app.use(router);
+app.mount('#app');

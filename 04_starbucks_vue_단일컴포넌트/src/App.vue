@@ -4,9 +4,10 @@
 //vite.config.js 에서 /src 를 @로 대체 할 수 있다.
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
-import Products from './components/Products.vue';
-import Signup from './components/Signup.vue';
-import Login from './components/Login.vue';
+import { RouterView } from 'vue-router';
+// import Products from './components/Products.vue';
+// import Signup from './components/Signup.vue';
+// import Login from './components/Login.vue';
 </script>
 
 <template>
@@ -16,7 +17,7 @@ import Login from './components/Login.vue';
       <article>
         내용
         <!-- <div id="map" style="width: 100%; height: 95%; border: 1px solid"></div> -->
-        <Products />
+        <router-view></router-view>
         <!-- <Signup /> -->
         <!-- <Login /> -->
       </article>
@@ -27,5 +28,5 @@ import Login from './components/Login.vue';
 </template>
 
 <style scoped>
-/* @import url('basic.css'); */
+/* @import url('/src/assets/base.css'); */
 </style>
