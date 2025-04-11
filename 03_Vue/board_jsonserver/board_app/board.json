@@ -1,0 +1,22 @@
+{
+  "boards": [
+    {
+      "id": "1",
+      "board_title": "제목1",
+      "board_content": "내용1",
+      "board_writer": "id99"
+    },
+    {
+      "id": "2",
+      "board_title": "제목2",
+      "board_content": "내용2",
+      "board_writer": "id99"
+    },
+    {
+      "id": "3",
+      "board_title": "제목3",
+      "board_content": "내용3",
+      "board_writer": "id98"
+    }
+  ]
+}
