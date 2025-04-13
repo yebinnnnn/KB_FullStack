@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1><i class="fa solid fa-house"></i>게시판 목록</h1>
-    <button class="btn btn-primary" @click="">글쓰기</button>
-    <router-link to="/write" /><button class="btn btn-primary" @click="">
+<!--    <button class="btn btn-primary" @click="">글쓰기</button> -->
+    <router-link to="/write"/><button class="btn btn-primary" @click=towrite()>
       글쓰기
     </button>
     <hr />
@@ -21,9 +21,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="b in boards">
+      <tr v-for="b in boards" :key="b.id">
         <td>{{ b.id }}</td>
-        <td>{{ b.board_title }}</td>
+        <td @click="goToPage">{{ b.board_title }}</td>
         <td></td>
         <td>
           <img
@@ -39,10 +39,16 @@
 </template>
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
+import {useRouter} from 'vue-router'
 import axios from 'axios';
 
+const router=useRouter()
 const boards = reactive([]);
 const boardsRef = ref([]);
+
+const towrite= async () =>{
+  router.push('/write')
+}
 const load = async () => {
   const url = '/api/boards';
   //받아올때 비동기
@@ -53,6 +59,10 @@ const load = async () => {
   //boards.splice(0, boards.length,[])
   boardsRef.value = boardsData;
 };
+
+// const goToPage = ()=>{
+//   router.push('/Page')
+// } 
 
 onMounted(() => {
   load();
