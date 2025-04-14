@@ -17,6 +17,12 @@
       "board_title": "제목3",
       "board_content": "내용3",
       "board_writer": "id98"
+    },
+    {
+      "id": "181e",
+      "board_title": "test",
+      "board_writer": "",
+      "board_content": "hi"
     }
   ]
 }
