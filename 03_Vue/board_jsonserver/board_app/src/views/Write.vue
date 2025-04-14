@@ -7,46 +7,45 @@
   </div>
 
   <div class="form-group">
-      <label>제목</label>
-      <input type="text" class="form-control" v-model="form.board_title" />
-    </div>
+    <label>제목</label>
+    <input type="text" class="form-control" v-model="form.board_title" />
+  </div>
 
   <div class="form-group">
-      <label>내용</label>
-      <textarea class="form-control" v-model="form.board_content"></textarea>
-    </div>
+    <label>내용</label>
+    <textarea class="form-control" v-model="form.board_content"></textarea>
+  </div>
 
   <div class="form-group">
     <label>작성자</label>
-    <input type="text" class="form-control" v-model="form.board_writer">
+    <input type="text" class="form-control" v-model="form.board_writer" />
   </div>
-
 </template>
 <script setup>
-import { useRouter} from 'vue-router'
-import { onMounted, ref, reactive } from 'vue'
-import axios from 'axios'
+import { useRouter } from 'vue-router';
+import { onMounted, ref, reactive } from 'vue';
+import axios from 'axios';
 
-const router=useRouter()
-const form=ref({
-  board_title :"",
-  board_writer:"",
-  board_content:""
-})
+const router = useRouter();
+const form = ref({
+  board_title: '',
+  board_writer: '',
+  board_content: '',
+});
 
-const goToBack=async () =>{
-  router.push('/Boards')
-}
+const goToBack = async () => {
+  router.push('/Boards');
+};
 
-const wrcontent = async()=>{
-  const url = 'api/boards'
-  try{
-    await axios.post(url, form.value)
-    alert('등록 완료!')
-    router.push('/boards') // 목록으로 이동
-  }catch(err){
-    console.log(err)
+const wrcontent = async () => {
+  const url = 'api/boards';
+  try {
+    await axios.post(url, form.value);
+    alert('등록 완료!');
+    router.push('/boards'); // 목록으로 이동
+  } catch (err) {
+    console.log(err);
   }
-}
+};
 </script>
 <style lang=""></style>
