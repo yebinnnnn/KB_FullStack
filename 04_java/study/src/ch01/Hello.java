@@ -1,4 +1,4 @@
-package ch01.sec09;
+package ch01;
 
 public class Hello {
     public static void main(String[] args) {
