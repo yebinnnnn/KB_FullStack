@@ -26,6 +26,17 @@ import { useRouter } from 'vue-router';
 import { onMounted, ref, reactive } from 'vue';
 import axios from 'axios';
 
+const deletewr = async (id) => {
+  const url = `api/boards/${id}`;
+  try {
+    await axios.delete(url);
+    alert('삭제 완료!');
+    router.push('/boards'); // 목록으로 이동
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const router = useRouter();
 const form = ref({
   board_title: '',
@@ -34,7 +45,7 @@ const form = ref({
 });
 
 const goToBack = async () => {
-  router.push('/Boards');
+  router.push('/boards');
 };
 
 const wrcontent = async () => {

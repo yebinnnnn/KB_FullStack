@@ -23,6 +23,15 @@
       "board_title": "test",
       "board_writer": "",
       "board_content": "hi"
+    },
+    {
+      "id": "fcc8",
+      "board_title": "",
+      "board_writer": "",
+      "board_content": ""
+    },
+    {
+      "id": "8b72"
     }
   ]
 }
