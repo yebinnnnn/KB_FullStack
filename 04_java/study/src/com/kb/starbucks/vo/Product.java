@@ -56,4 +56,28 @@ public class Product {
     public void setProdDt(Date prodDt) {
         this.prodDt = prodDt;
     }
+
+    //이름 똑같아야 오버라이딩됨
+    @Override
+    public String toString(){
+        return prodNo+":"+prodName+":"+prodPrice+":"+prodDt;
+    }
+    
+    //얘도 오버라이드. alt+insert 하면 재정의 할 수 있다 ㅎ
+
+    /**
+     * 인자로 쓰이는 상품의 상품번호와 현재객체의 상품 번호가 같으면 true반환
+     * 그렇지 않으면 false
+     * @param obj
+     * @return
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if(obj !=null && obj instanceof Product){
+            Product p = (Product) obj;
+            return p.getProdNo().equals(this.getProdNo());
+        }else{
+            return false;
+        }
+    }
 }
