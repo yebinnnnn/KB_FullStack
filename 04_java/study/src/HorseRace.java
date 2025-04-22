@@ -1,34 +1,42 @@
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
- * 이벤트 프로그램 처리순서
- * 1.이벤트의 종류와 이벤트 소스 결정하기
- * MouseEvent frame
- * 2.이벤트 핸들러를 작성
- * 3. 이벤트 소스와 핸들러를 등록하는 작업 진행
+ 이벤트프로그램처리 순서
+ 1. 이벤트종류와        이벤트 소스 결정하기
+ MouseMotionEvent  frame
+ MouseEvent        frame
+ ActionEvent       btStart
+ 2. 이벤트 핸들러를 작성
+ 3. 이벤트소스에 핸들러를 등록
  */
 
-//어댑터 패턴으로 특정 메소드만 오버라이드.
-    //사용자가 원하는 패턴으로 변화시켜놓은 형태
-    //아래처럼 인터페이스 유형으로 하면 모든 메소드가 오버라이드 된 상태로 유지해야함.
+
+/**
+ * 어덥터 패턴 : 인터페이스를 사용자가 원하는 방식으로 변환
+ */
 class Handler extends MouseAdapter {
+    protected Handler() {
+        super();
+    }
     @Override
     public void mouseMoved(MouseEvent e) {
-        super.mouseMoved(e);
-        System.out.println("MouseMoved: x="+e.getX()+", y="+e.getY());
+        System.out.println("mouseMoved");
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        super.mouseClicked(e);
-        System.out.println("MouseClicked: x="+e.getX()+", y="+e.getY());
+        System.out.println("mouseClicked");
     }
 }
-//class Handler2 implements MouseListener{
+//class Handler2 implements MouseListener {
 //    @Override
 //    public void mouseClicked(MouseEvent e) {
-//        System.out.println("MouseClicked: x="+e.getX()+", y="+e.getY());
+//        System.out.println("mouseClicked x="+e.getX()+" y="+e.getY());
 //    }
 //
 //    @Override
@@ -55,29 +63,61 @@ class Handler extends MouseAdapter {
 //    @Override
 //    public void mouseDragged(MouseEvent e) {
 //    }
+//
 //    @Override
 //    public void mouseMoved(MouseEvent e) {
-//        System.out.println("MouseMoved: x="+e.getX()+", y="+e.getY());
+//        System.out.println("mouseMoved: x=" + e.getX() + ", y=" + e.getY());
 //    }
 //}
 public class HorseRace {
     private JFrame frame;
-    public HorseRace() {
-        frame = new JFrame();
+    private JTextField tf;
+    private JButton btStart;
+    private JButton btReady;
+
+    class MyActionHandler implements ActionListener {
+        //        private JTextField tf;
+//        MyActionHandler(JTextField tf) {
+//            this.tf = tf;
+//        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //System.out.println("클릭되었습니다");
+            tf.setText("시작버튼이 클릭되었습니다");
+        }
+    }
+    public HorseRace(){
+        tf = new JTextField();
+        btStart = new JButton("Start");
+        btReady = new JButton("Ready");
+
+        frame = new JFrame(); //액자
+        Container c = frame.getContentPane(); //액자 종이판
+        c.setLayout(new GridLayout(3, 1));
+        c.add(tf);
+        c.add(btStart);
+        c.add(btReady);
         frame.setTitle("Horse Race");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        Handler h= new Handler();
-        frame.addMouseListener(h);
-        frame.addMouseMotionListener(h);
-//        Handler1 h1=new Handler1();
-//        Handler2 h2=new Handler2();
-//        frame.addMouseListener(h2);
+
+
+
+//        MyActionHandler ah = new MyActionHandler(tf);
+        MyActionHandler ah = new MyActionHandler();
+        btStart.addActionListener(ah);
+
+//        Handler1 h1 = new Handler1();
 //        frame.addMouseMotionListener(h1);
+//
+//        Handler2 h2 = new Handler2();
+//        frame.addMouseListener(h2);
+        Handler h = new Handler();
+        frame.addMouseListener(h);
+
         frame.setSize(300, 300);
         frame.setVisible(true);
     }
-
     public static void main(String[] args) {
         new HorseRace();
     }
