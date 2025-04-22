@@ -2,6 +2,7 @@ package com.kb.starbucks.vo;
 
 import java.util.Date;
 
+//상속받는 클래스가 없으면 컴파일 시에 자동으로 Object를 상속받게 된다.
 public class Product {
     private String prodNo;
     private String prodName;

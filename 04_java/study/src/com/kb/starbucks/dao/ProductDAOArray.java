@@ -11,8 +11,9 @@ public class ProductDAOArray implements ProductDAO {
     //외부에 노출되지 않는 상품들이 저장되는 저장소
     private Product[] products; //저장소
     private int totalCnt; //저장된 상품 수
-    public ProductDAOArray(){}
-
+    public ProductDAOArray(){
+        products= new Product[5];
+    }
     /**
      * 저장소의 크기만큼 저장소를 만든다.
      * @param size 저장소의 크기
