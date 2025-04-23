@@ -100,9 +100,6 @@ public class HorseRace {
         frame.setTitle("Horse Race");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
-
-
 //        MyActionHandler ah = new MyActionHandler(tf);
         MyActionHandler ah = new MyActionHandler();
         btStart.addActionListener(ah);
