@@ -69,12 +69,50 @@ class Handler extends MouseAdapter {
 //        System.out.println("mouseMoved: x=" + e.getX() + ", y=" + e.getY());
 //    }
 //}
+
+class Horse extends Canvas {
+    private String name; //말이름
+    private int x, y;
+    Horse(String name) {
+        this.name = name;
+        this.x = 10;
+        this.y = 10;
+    }
+
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    @Override
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        g.drawString(name, x, y);
+    }
+
+//    @Override
+//    public void update(Graphics g) {
+//        g.drawString(name, x, y);
+//    }
+}
 public class HorseRace {
     private JFrame frame;
     private JTextField tf;
     private JButton btStart;
     private JButton btReady;
-
+    private Horse[] horses;
     class MyActionHandler implements ActionListener {
         //        private JTextField tf;
 //        MyActionHandler(JTextField tf) {
@@ -84,17 +122,31 @@ public class HorseRace {
         public void actionPerformed(ActionEvent e) {
             //System.out.println("클릭되었습니다");
             tf.setText("시작버튼이 클릭되었습니다");
+            int maxStep=20;
+            for(Horse horse: horses){
+                for(int i=0; i<maxStep; i++) {
+                    horse.setX(horse.getX() + 10);
+                    horse.repaint();
+                }
+            }
         }
     }
     public HorseRace(){
+        horses = new Horse[3];
+        for(int i = 0; i < 3; i++) {
+            horses[i] = new Horse("말 " + (i + 1));
+        }
         tf = new JTextField();
         btStart = new JButton("Start");
         btReady = new JButton("Ready");
 
         frame = new JFrame(); //액자
         Container c = frame.getContentPane(); //액자 종이판
-        c.setLayout(new GridLayout(3, 1));
+        c.setLayout(new GridLayout(3+horses.length, 1));
         c.add(tf);
+        for (Horse horse : horses) {
+            c.add(horse);
+        }
         c.add(btStart);
         c.add(btReady);
         frame.setTitle("Horse Race");
@@ -116,6 +168,7 @@ public class HorseRace {
         frame.setVisible(true);
     }
     public static void main(String[] args) {
+
         new HorseRace();
     }
 }

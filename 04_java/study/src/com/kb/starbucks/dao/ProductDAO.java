@@ -2,6 +2,8 @@ package com.kb.starbucks.dao;
 
 import com.kb.starbucks.vo.Product;
 
+import java.util.List;
+
 public interface ProductDAO {
     //인터페이스의 모든 메소드는 public abstract 이 된다.
 
@@ -23,5 +25,5 @@ public interface ProductDAO {
      *저장소의 모든 상품을 반환한다.
      * @return 저장소를 반환하는것이 아니라 저장소에 저장된 상품들만 반환한다.
      */
-    public Product[] findAll();
+    public List<Product> findAll();
 }
