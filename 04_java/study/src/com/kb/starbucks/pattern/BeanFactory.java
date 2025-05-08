@@ -24,6 +24,7 @@ public class BeanFactory {
             String propertyName =  (String)entry.getKey(); //pDao, cDao
             String className =  (String)entry.getValue();  //com.kb.starbucks.dao.ProductDAOArray, com.kb.starbucks.dao.CustomerDAOArray
 
+
             Object obj = Class.forName(className).getDeclaredConstructor().newInstance();
             beans.put(propertyName, obj);
         }

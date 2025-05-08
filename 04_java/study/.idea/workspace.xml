@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72f0128a-4450-4bf9-9187-80382fd48ffc" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/../out/production/study/HorseRace$MyActionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/study/HorseRace$MyActionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/study/HorseRace.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/study/HorseRace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/study/Share.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/study/Share.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/study/ShareThreadTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/study/ShareThreadTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HorseRace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HorseRace.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/kb/starbucks/StarbucksUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kb/starbucks/StarbucksUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/kb/starbucks/dao/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kb/starbucks/dao/CustomerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/kb/starbucks/dao/CustomerDAOArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kb/starbucks/dao/CustomerDAOArray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/kb/starbucks/dao/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kb/starbucks/dao/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/kb/starbucks/dao/ProductDAOArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kb/starbucks/dao/ProductDAOArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/kb/starbucks/dao/ProductDAOList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kb/starbucks/dao/ProductDAOList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/kb/starbucks/pattern/BeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kb/starbucks/pattern/BeanFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/kb/starbucks/vo/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kb/starbucks/vo/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/kb/starbucks/vo/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kb/starbucks/vo/Product.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,23 +40,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/KB_fullStack/04_java/study",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/KB_fullStack/04_java/study/src/Main.java",
-    "settings.editor.selected.configurable": "File.Encoding",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/KB_fullStack/04_java/study&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/KB_fullStack/04_java/study/src/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.kb.starbucks.dao" />
@@ -78,7 +79,8 @@
       <option name="presentableId" value="Default" />
       <updated>1744591660890</updated>
       <workItem from="1744591662199" duration="1265000" />
-      <workItem from="1745906688390" duration="6870000" />
+      <workItem from="1745906688390" duration="7696000" />
+      <workItem from="1746678357424" duration="432000" />
     </task>
     <servers />
   </component>

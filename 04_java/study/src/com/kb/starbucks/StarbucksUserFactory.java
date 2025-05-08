@@ -1,47 +1,32 @@
 package com.kb.starbucks;
 
 import com.kb.starbucks.dao.CustomerDAO;
-import com.kb.starbucks.dao.CustomerDAOArray;
 import com.kb.starbucks.dao.ProductDAO;
+import com.kb.starbucks.pattern.BeanFactory;
 import com.kb.starbucks.vo.Customer;
 import com.kb.starbucks.vo.Product;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class StarbucksUser {
+public class StarbucksUserFactory {
     private Scanner sc;
     //private ProductDAOArray pDao;
     private ProductDAO pDao;
     private CustomerDAO cDao;
 
-    public StarbucksUser(int size){
-
-        //최대 5개의 상품이 저장될 저장소를 갖는다. 기능확장...
-//        pDao = new ProductDAOArray(5);
-
-
-        //1. dao.properties파일을 JVM에 로딩해서 property로 관리
-        java.util.Properties env = new java.util.Properties();
+    public StarbucksUserFactory(int size){
         try {
-            //env.load(new java.io.FileInputStream("c:\\dao.properties"));
-            //env.load(StarbucksUser.class.getResourceAsStream("dao.properties")); //같은 패키지에서 찾기
+            //dao.properties파일을 로드(이름=값)해서 맵에 각 값객체를 저장한다
+            BeanFactory factory = new BeanFactory("dao.properties");
 
-            env.load(StarbucksUser.class.getResourceAsStream("/" + "dao.properties")); //classpath에서 찾기
-            String className = env.getProperty("pDao");
-            //com.kb.starbucks.dao.ProductDAOArray
-            //2. 클래스이름으로 클래스파일찾아 JVM에 로드
-            Class c = Class.forName(className);
-
-            //3. 객체생성
-//           pDao = (ProductDAO) c.newInstance();
-            pDao = (ProductDAO) c.getDeclaredConstructor().newInstance();
+            //맵에서 이름에해당하는 객체찾아 반환
+            pDao = factory.getInstance("pDao", ProductDAO.class);
+            cDao = factory.getInstance("cDao", CustomerDAO.class);
         }catch(Exception e){
             e.printStackTrace();
+//            throw new RuntimeException(e);
         }
-        cDao = new CustomerDAOArray(5);
-
-
         sc = new Scanner(System.in);
     }
     public void addCustomer(){
@@ -90,7 +75,7 @@ public class StarbucksUser {
         System.out.println(p); //p.getProdName(); NullPointerException발생가능
     }
     public static void main(String[] args) {
-        StarbucksUser su = new StarbucksUser(100);
+        StarbucksUserFactory su = new StarbucksUserFactory(100);
         String opt;
         do {
             System.out.println("1-전체조회, 2-상품추가, 3-상품번호로 검색, 4-상품명으로 검색, 5-고객추가, 6-ID로 고객조회, 9-종료");
@@ -112,7 +97,5 @@ public class StarbucksUser {
             }
         }while (!opt.equals("9"));
 
-        //su.search();
-        //su.add();
     }
 }

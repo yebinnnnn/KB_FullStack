@@ -43,6 +43,7 @@ public class ProductDAOList implements ProductDAO {
     public void delete(String prodNo) {
         Product p = new Product();
         p.setProdNo(prodNo);
+        //products.remove(products.indexOf(prodNo)); //저 틀렸슴다~
         products.remove(products.indexOf(p));
     }
 }
