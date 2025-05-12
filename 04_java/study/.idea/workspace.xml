@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72f0128a-4450-4bf9-9187-80382fd48ffc" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +48,10 @@
     "onboarding.tips.debug.path": "C:/KB_fullStack/04_java/study/src/Main.java",
     "settings.editor.selected.configurable": "File.Encoding",
     "vue.rearranger.settings.migration": "true",
-    "애플리케이션.StarbucksUserFactoryCommand.executor": "Run"
+    "애플리케이션.StarbucksUserFactoryCommand.executor": "Run",
+    "애플리케이션.StarbucksUserFactoryCommandCart.executor": "Run",
+    "애플리케이션.TCPClient.executor": "Run",
+    "애플리케이션.TCPServer.executor": "Run"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -75,7 +77,8 @@
       <updated>1744591660890</updated>
       <workItem from="1744591662199" duration="1265000" />
       <workItem from="1745906688390" duration="7696000" />
-      <workItem from="1746678357424" duration="6436000" />
+      <workItem from="1746678357424" duration="6634000" />
+      <workItem from="1747024930694" duration="7610000" />
     </task>
     <servers />
   </component>
