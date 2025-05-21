@@ -3,12 +3,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.scoula.jdbc_ex.JDBCUtil;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+
 public class ConnectionTest
 {
-
     @Test @DisplayName("jdbc_ex 데이터베이스에 접속한다.")
     public void testConnection() throws SQLException, ClassNotFoundException
     {
@@ -30,6 +28,14 @@ public class ConnectionTest
     public void testConnection2() throws SQLException {
         try(Connection conn = JDBCUtil.getConnection()) {
             System.out.println("DB 연결 성공");
+            String sql ="select * from users";
+            try(Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);
+            ) {
+                while(rs.next()) {
+                    System.out.println(rs.getString("name"));
+                }
+            }
         }
     }
 }
