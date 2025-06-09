@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 어노테이션 사용 가능 -->
+    <context:annotation-config></context:annotation-config>
+    <context:component-scan base-package="com.my.starbucks.dao" />
+    <context:component-scan base-package="com.my.starbucks.vo" />
+    <context:component-scan base-package="com.my.starbucks.service"/>
+
+    <bean id="service" class="com.my.starbucks.service.ProductService">
+<!--        <constructor-arg ref="daoMysql"></constructor-arg>-->
+        <property name="dao" ref="daoMysql"/>
+    </bean>
+</beans>
+<!--    매개변수 없는 생성자 필요-->
+<!--    <bean id="p" class="com.my.starbucks.vo.Product">-->
+<!--        <property name="prodNo" value="C0001"/>-->
+<!--        <property name="prodName" value="아메리카노"/>-->
+<!--        <property name="prodPrice" value="1000"/>-->
+<!--    </bean>-->
+<!--    <bean id="daomysql" class="com.my.starbucks.dao.ProductDAOMySQL"></bean>-->
+<!--    <bean id="daoyoursql" class="com.my.starbucks.dao.ProductDAOYourSQL"></bean>-->
+
+<!--java bean 의 조건.-->
+<!--1. public 매개변수 없는 생성자 필요-->
+<!--property 용 mv 는 public 이면 안됨-->
+<!--property 용 mv 는 public setter/getter-->
