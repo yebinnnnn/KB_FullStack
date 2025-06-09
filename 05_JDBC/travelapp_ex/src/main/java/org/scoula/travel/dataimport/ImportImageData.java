@@ -6,11 +6,12 @@ import org.scoula.travel.dao.TravelDaoImpl;
 import org.scoula.travel.domain.TravelImageVO;
 
 import java.io.File;
+import java.sql.Connection;
 
 public class ImportImageData {
     public static void main(String[] args) {
         TravelDao dao = new TravelDaoImpl();
-
+        Connection conn= JDBCUtil.getConnection();
         File dir = new File("../travel-image");
         File[] files = dir.listFiles();
         for (File file : files) {

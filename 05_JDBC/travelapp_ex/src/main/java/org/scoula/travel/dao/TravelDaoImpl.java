@@ -13,11 +13,12 @@ import java.util.List;
 import java.util.Optional;
 
 public class TravelDaoImpl implements TravelDao{
+    Connection conn=JDBCUtil.getConnection();
+
     @Override
     public void insertImage(TravelImageVO image) {
         String sql = "insert into tbl_travel_image(filename, travel_no) values(?,?)";
-        try (Connection conn = JDBCUtil.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, image.getFilename());
             pstmt.setLong(2, image.getTravelNo());
 
@@ -31,7 +32,6 @@ public class TravelDaoImpl implements TravelDao{
     public int getTotalCount() {
         String sql = "select count(*) from tbl_travel";
         try (
-                Connection conn = JDBCUtil.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 ResultSet rs = pstmt.executeQuery()) {
             rs.next();
@@ -47,8 +47,7 @@ public class TravelDaoImpl implements TravelDao{
         List<String> districts = new ArrayList<>();
         String sql = "SELECT DISTINCT(district) FROM tbl_travel ORDER BY district";
 
-        try (Connection conn = JDBCUtil.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
                 districts.add(rs.getString("district"));
@@ -85,8 +84,7 @@ public class TravelDaoImpl implements TravelDao{
     public List<TravelVO> getTravels() {
         List<TravelVO> travels = new ArrayList<>();
         String sql = "select * from tbl_travel order by district, title";
-        try (Connection conn = JDBCUtil.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
                 TravelVO travel = map(rs);
@@ -103,7 +101,7 @@ public class TravelDaoImpl implements TravelDao{
     public List<TravelVO> getTravels(int page) {
         List<TravelVO> travels = new ArrayList<>();
         String sql = "select * from tbl_travel order by district, title limit ?,?";
-        try (Connection conn = JDBCUtil.getConnection();
+        try (
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             int count = 10;
             int start = (page - 1) * count;
@@ -126,7 +124,7 @@ public class TravelDaoImpl implements TravelDao{
     public List<TravelVO> getTravels(String district) {
         List<TravelVO> travels = new ArrayList<TravelVO>();
         String sql = "select * from tbl_travel where district = ?";
-        try (Connection conn = JDBCUtil.getConnection();
+        try (
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, district);
             try (ResultSet rs = pstmt.executeQuery()) {
@@ -153,7 +151,7 @@ public class TravelDaoImpl implements TravelDao{
                     where t.no = ?;
                 """;
 
-        try (Connection conn = JDBCUtil.getConnection();
+        try (
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setLong(1, no);
             try (ResultSet rs = pstmt.executeQuery()) {
@@ -192,7 +190,7 @@ public class TravelDaoImpl implements TravelDao{
         String insertSQL =
                 "INSERT INTO tbl_travel(no, district, title, description, address,phone) values (?,?,?,?,?,?)";
 
-        try(Connection conn =JDBCUtil.getConnection();
+        try(
             PreparedStatement ps = conn.prepareStatement(insertSQL);
         ) {
             ps.setLong(1, travel.getNo());
