@@ -21,13 +21,13 @@ RequestMappingHandlerMapping, RequestMappingHandlerAdapter 자동 등록
  */
 @ComponentScan(basePackages = {"com.kb.starbucks.control"})
 public class MVC2Config implements WebMvcConfigurer {
-//    @Bean
-//    public InternalResourceViewResolver viewResolver() {
-//        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-//        resolver.setPrefix("/WEB-INF/views/");
-//        resolver.setSuffix(".jsp");
-//        return resolver;
-//    }
+    @Bean
+    public InternalResourceViewResolver viewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setSuffix(".jsp"); //미리 접미어로 .jsp 를 등록
+        return resolver;
+    }
 
 
 

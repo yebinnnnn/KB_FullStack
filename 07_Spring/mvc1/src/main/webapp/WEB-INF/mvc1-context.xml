@@ -2,15 +2,25 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc
-        https://www.springframework.org/schema/beans/spring-mvc.xsd
-        ">
-<!--    컴포넌트 스캔할때는 컨텍스트 어노테이션 설정 안해도 됨.-->
-<!--        <context:annotation-config></context:annotation-config>-->
-        <context:component-scan base-package="com.my.starbucks.control"/>
-</beans>
+         https://www.springframework.org/schema/mvc/spring-mvc.xsd"
+>
+    <context:component-scan base-package="com.kb.starbucks.control"/>
 
+<!-- <mvc:annotation-driven/>
+       @Controller, @RequestMapping 등 인식
+        RequestMappingHandlerMapping, RequestMappingHandlerAdapter 자동 등록
+      @RequestBody, @ResponseBody 등을 위한 HttpMessageConverters 자동 등록 (ex: JSON 변환)
+      @Valid 지원
+      기본 Formatter, Validator 등록
+-->
+<!--    <mvc:annotation-driven/>-->
+<!--    <mvc:view-resolvers>-->
+<!--        <mvc:jsp prefix="/WEB-INF" suffix=".jsp"></mvc:jsp>-->
+<!--    </mvc:view-resolvers>-->
+</beans>
