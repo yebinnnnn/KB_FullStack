@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -18,27 +19,30 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes= {RootConfig.class})
+@ContextConfiguration(classes = RootConfig.class)
 @Log4j2
 class RootConfigTest {
 
     @Autowired
     private DataSource dataSource;
+
     @Test
-    @DisplayName("DataSource연결이 된다.")
-    public void dataSource()throws SQLException{
-        try(Connection con = dataSource.getConnection()){
-            log.info("DataSource 준 비 완 료");
+    @DisplayName("DataSource 연결")
+    public void DataSource() throws SQLException {
+        try (Connection con = dataSource.getConnection()) {
+            log.info("DataSource 준비 완료");
             log.info(con);
         }
     }
+
     @Autowired
     private SqlSessionFactory sqlSessionFactory;
+
     @Test
     public void testSqlSessionFactory() {
         try (
-                SqlSession session = sqlSessionFactory.openSession();
-                Connection con = session.getConnection();
+            SqlSession session = sqlSessionFactory.openSession();
+            Connection con = session.getConnection();
         ) {
             log.info(session);
             log.info(con);

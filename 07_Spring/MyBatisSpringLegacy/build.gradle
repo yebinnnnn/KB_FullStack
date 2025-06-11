@@ -30,15 +30,13 @@ dependencies {
             { exclude group: 'commons-logging', module: 'commons-logging' }
     implementation "org.springframework:spring-webmvc:${springVersion}"
     implementation 'javax.inject:javax.inject:1'
-    implementation "org.springframework:spring-web:${springVersion}"
 
     // AOP
     implementation 'org.aspectj:aspectjrt:1.9.20'
     implementation 'org.aspectj:aspectjweaver:1.9.20'
 
     // JSP, SERVLET, JSTL
-    implementation 'javax.servlet:javax.servlet-api:4.0.1'
-    //implementation('javax.servlet:javax.servlet-api:4.0.1')
+    implementation('javax.servlet:javax.servlet-api:4.0.1')
     compileOnly 'javax.servlet.jsp:jsp-api:2.1'
     implementation 'javax.servlet:jstl:1.2'
 
@@ -64,7 +62,7 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
     // Jackson - Json 처리
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.4'
 
     // 테스트
     testImplementation "org.springframework:spring-test:${springVersion}"
@@ -73,7 +71,8 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-   // implementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+
+    // 데이터베이스
     implementation 'com.mysql:mysql-connector-j:8.1.0'
     implementation 'com.zaxxer:HikariCP:2.7.4'
 
@@ -85,7 +84,6 @@ dependencies {
     implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16'
     implementation 'org.apache.logging.log4j:log4j-api:2.0.1'
     implementation 'org.apache.logging.log4j:log4j-core:2.0.1'
-
 }
 
 
