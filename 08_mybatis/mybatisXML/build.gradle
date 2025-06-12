@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.my.starbucks'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+test {
+    systemProperty "file.encoding", "UTF-8"
+}
+
+//버전관리
+ext {
+    lombokVersion = '1.18.30'
+    logbackVersion = '1.5.18'
+    mysqlJDBCVersion = '8.4.0'
+    mybatisVersion = '3.5.19'
+    hikariCpVersion = '6.3.0'
+    junitVersion = '5.10.2'
+}
+dependencies {
+// Lombok
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+    testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+
+    // Logback
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation "ch.qos.logback:logback-classic:$logbackVersion"
+
+    // MySQL JDBC
+    implementation "com.mysql:mysql-connector-j:$mysqlJDBCVersion"
+
+    // Mybatis
+    implementation "org.mybatis:mybatis:${mybatisVersion}"
+
+//    // HikariCP
+//    implementation "com.zaxxer:HikariCP:$hikariCpVersion"
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
